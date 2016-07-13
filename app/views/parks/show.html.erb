@@ -1,13 +1,19 @@
 <div class="container">
   <h1 class="title"><%= @parks.name %></h1>
   <div class="picture-frame">
-    <img class="picture" src="<%= @parks.picture %>"> 
+    <!-- <img class="picture" src="<%= @parks.picture %>">  -->
+    <p><%= image_tag @parks.picture, class: 'picture' %></p>
   </div>
   <p class="description"><%= @parks.description %></p>
+  <ul>
+    <% @parks.rangers.each do |ranger| %>
+      <li><%= ranger.name %></li>
+    <% end %>
+  </ul>
   <hr>
   <ul>
     <li class="inline btn btn-primary"><%= link_to('Edit', edit_park_path) %></li>
-    <li class="inline btn btn-danger pull-right"><%= link_to("Delete", @parks, method: :delete) %></li> 
+    
   </ul>
 </div>
 

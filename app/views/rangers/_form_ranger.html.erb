@@ -1,0 +1,19 @@
+  <%= form_for @ranger do |f| %>
+    <div class="form">
+      <%= f.label :name %>
+      <p class="input"> <%= f.text_field :name %></p>
+    </div>
+    <div class="form">
+      <%= f.label :years %>
+    </div>
+    <div class="form">
+      <p class="input"><%= f.text_field :years %></p>
+    </div>
+    <div>
+      <%= f.collection_check_boxes(:park_ids, @parks, :id, :name) %>
+    </div>
+    <ul>
+      <li class="inline"><%= f.submit %></li>
+      <li class="inline btn"><a href="/rangers">Cancel</a></li>
+    </ul>
+  <% end %>

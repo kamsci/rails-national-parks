@@ -6,10 +6,13 @@ class ParksController < ApplicationController
 
   def show
     @parks = Park.find(params[:id])
+    # .includes(:rangers)
+    # render json: params
   end
 
   def edit
     @park = Park.find(params[:id])
+    @rangers = Ranger.all
   end
 
   def update
@@ -19,6 +22,8 @@ class ParksController < ApplicationController
 
   def new
     @park = Park.new
+    # Query to get rangers in db
+    @rangers = Ranger.all
   end
 
   def create
@@ -34,7 +39,7 @@ class ParksController < ApplicationController
 
   private
   def park_params
-    params.require(:park).permit(:name, :description, :picture)
+    params.require(:park).permit(:name, :description, :picture, :ranger_ids => [])
   end
 
 end

@@ -1,0 +1,8 @@
+<h1>Rangers List</h1>
+<br>
+<button><%= link_to("Add a ranger", rangers_new_path) %></button>
+<br>
+<% @rangers.each do |ranger| %>
+  <h3><%= link_to(ranger.name, ranger_path(ranger)) %><small>: <%= ranger.years %> year(s) experience</small></h3>
+  <hr>
+<% end %>

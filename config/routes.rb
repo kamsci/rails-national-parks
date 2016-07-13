@@ -1,8 +1,22 @@
 Rails.application.routes.draw do
-
   root 'main#index'
 
   resources :parks
+
+  get 'rangers', to: 'rangers#index'
+
+  post 'rangers', to: 'rangers#create'
+
+  get 'rangers/new', to: 'rangers#new'
+
+  get 'rangers/:id', to: 'rangers#show', as: 'ranger'
+
+  get 'rangers/:id/edit', to: 'rangers#edit', as: 'edit_ranger'
+
+  patch 'rangers/:id', to: 'rangers#update'
+
+  delete 'rangers/:id', to: 'rangers#destroy'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
